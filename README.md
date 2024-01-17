@@ -20,7 +20,7 @@ NSTR, just
 
 ## install PVE on top
 - along the lines of https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_12_Bookworm
-- make sure to set static IP in `/tec/hosts` (you've been told.. else installation of pve-manager package will fail)
+- make sure to set static IP in `/etc/hosts` (you've been told.. else installation of pve-manager package will fail)
 - after stock kernel uninstall, you're told to run `update-grub`. This will fail because `/usr/sbin` is not in path. include it via ```export PATH=$PATH:/usr/sbin```
 - networking won't work after reboot. so do a manual edit of `/etc/network/interfaces` (adjust to match your ethernet interface name):
   ```
