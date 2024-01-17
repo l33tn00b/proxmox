@@ -91,6 +91,8 @@ NSTR, just
     bridge-stp off
     bridge-fd 0
   ```
+- get rid of enterprise edition nag (bookworm is debian 12): echo "deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription" >> /etc/apt/sources.list
+rm /etc/apt/sources.list.d/pve-enterprise.list
 
 ## GPU virtualization
 Follow https://gitlab.com/polloloco/vgpu-proxmox
