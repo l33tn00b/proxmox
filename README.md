@@ -107,5 +107,7 @@ Follow https://gitlab.com/polloloco/vgpu-proxmox
 # Some Basic VMs
 ## Set up VM for running docker containers
 - Base Image Debian 12
+- install mc
+- install unattended-upgrades
 - install docker according to: https://docs.docker.com/engine/install/debian/
   - just be root and leave out all the sudos (yay, running curl as root)
