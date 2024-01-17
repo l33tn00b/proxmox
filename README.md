@@ -103,3 +103,9 @@ Follow https://gitlab.com/polloloco/vgpu-proxmox
 
 ## Add ZFS RAID for VM Data
 - to do
+
+# Some Basic VMs
+## Set up VM for running docker containers
+- Base Image Debian 12
+- install docker according to: https://docs.docker.com/engine/install/debian/
+  - just be root and leave out all the sudos (yay, running curl as root)
