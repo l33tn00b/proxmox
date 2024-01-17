@@ -75,6 +75,10 @@ NSTR, just
 - check SSH
 - use UEFI boot with GRUB
 
+Base Installation complete?
+- install mc
+- install unattended-upgrades (yes, might break things. but rather broken because of good security than because of having been taken over...)
+
 ## Install PVE on top
 - along the lines of https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_12_Bookworm
 - make sure to set static IP in `/etc/hosts` (you've been told.. else installation of pve-manager package will fail)
