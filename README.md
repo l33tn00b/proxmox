@@ -136,7 +136,7 @@ rm /etc/apt/sources.list.d/pve-enterprise.list
     volumes:
       dls-db:
     ```
-  - ```docker compose up --detach```
+  - as root: ```docker compose up --detach```
   - maybe run nmap against the docker host to see if 8443 is open: ```nmap -v -sT <ip>```
 
 ## Add ZFS RAID for VM Data
