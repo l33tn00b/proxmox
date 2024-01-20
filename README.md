@@ -1,5 +1,5 @@
 # proxmox
-Proxmox HomeLab
+Proxmox HomeLab (?)
 
 # What
 Proxmox VE Homelab server.   
@@ -102,7 +102,42 @@ rm /etc/apt/sources.list.d/pve-enterprise.list
 ## GPU virtualization
 - Follow https://gitlab.com/polloloco/vgpu-proxmox
   - maybe ask someone for ```NVIDIA-GRID-Linux-KVM-535.129.03-537.70.zip``` if you can't cough up an enterprisely-looking email address
-- After having docker runner up (see below, Basic VMs): Set Up Delegated License Server (link from above git): https://git.collinwebdesigns.de/oscar.krause/fastapi-dls 
+- After having docker runner up (see below, Basic VMs): Set Up Delegated License Server (link from above git): https://git.collinwebdesigns.de/oscar.krause/fastapi-dls
+  - make sure compose is installed (```apt install docker-compose-plugin```)
+  - create ```compose.yml``` in a nice place (your home dir?), choosing 8443 as host port:
+    ```
+    version: '3.9'
+
+    x-dls-variables: &dls-variables
+      TZ: Europe/Berlin # REQUIRED, set your timezone correctly on fastapi-dls AND YOUR CLIENTS !!!
+      DLS_URL: <your IP> # REQUIRED, change to your ip or hostname
+      DLS_PORT: 8443
+      LEASE_EXPIRE_DAYS: 90  # 90 days is maximum
+      DATABASE: sqlite:////app/database/db.sqlite
+      DEBUG: false
+    
+    services:
+      dls:
+        image: collinwebdesigns/fastapi-dls:latest
+        restart: always
+        environment:
+          <<: *dls-variables
+        ports:
+          - "8443:443"
+        volumes:
+          - /opt/docker/fastapi-dls/cert:/app/cert
+          - dls-db:/app/database
+        logging:  # optional, for those who do not need logs
+          driver: "json-file"
+          options:
+            max-file: 5
+            max-size: 10m
+    
+    volumes:
+      dls-db:
+    ```
+  - ```docker compose up --detach```
+  - maybe run nmap against the docker host to see if 8443 is open: ```nmap -v -sT <ip>```
 
 ## Add ZFS RAID for VM Data
 - to do
