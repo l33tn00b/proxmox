@@ -3,7 +3,7 @@ Proxmox HomeLab (?)
 
 # What
 Proxmox VE Homelab server.   
-Mostly for virtualizing a GPU (Tesla P4) to run whispernet (speech recognition).  
+Mostly for virtualizing a GPU (Tesla P4) to run whispernet (speech recognition) (willow)
 Maybe we'll run some other stuff on top (HomeAssistant?).
 Totally overblown. Let's do it anyway.
 
@@ -140,15 +140,45 @@ rm /etc/apt/sources.list.d/pve-enterprise.list
   - as root: ```docker compose up --detach```
 - go back to proxmox server:
   - maybe run nmap against the docker host to see if 8443 is open: ```nmap -v -sT <ip>```
-  - token download, change curl command to create directory if it doesn't exist and change port to 8440: ``` curl --insecure -L -X GET https://<ip>:8443/-/client-token -o /etc/nvidia/ClientConfigToken/client_configuration_token_$(date '+%d-%m-%Y-%H-%M-%S').tok --create-dirs```
+ 
 
 ## Add ZFS RAID for VM Data
 - to do
 
 # Some Basic VMs
-## Set up VM for running docker containers
+## Set up VM for running docker containers 
+Used for
+- Willow application Server
+- Delegated License Server (vGPU)
+
+HW config:
+- 32GB Disk
+- 1 Core
+- 2 GB RAM
+- vmbr0, no firewall
+
+
+Install:
 - Base Image Debian 12
 - install mc
 - install unattended-upgrades
 - install docker according to: https://docs.docker.com/engine/install/debian/
   - just be root and leave out all the sudos (yay, running curl as root)
+  
+## Set Up VM for Willow Inference Server
+No container available, yet
+HW config:
+- 32GB Disk
+- 1 Core
+- 2 GB RAM
+- vmbr0, no firewall
+
+Install:
+- Base Image Debian 12
+- install mc
+- install unattended-upgrades
+
+# Remarks concerning willow
+- AutoCorrect Fork for handing misunderstood/non-recognized commands off to alexa: https://github.com/kovrom/willow-autocorrect
+- Inference Server Dashboard for Home Assistant: https://github.com/jazzmonger/Willow-Dashboard
+- 
