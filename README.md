@@ -103,6 +103,7 @@ rm /etc/apt/sources.list.d/pve-enterprise.list
 - Follow https://gitlab.com/polloloco/vgpu-proxmox
   - maybe ask someone for ```NVIDIA-GRID-Linux-KVM-535.129.03-537.70.zip``` if you can't cough up an enterprisely-looking email address
 - After having docker runner up (see below, Basic VMs): Set Up Delegated License Server (link from above git): https://git.collinwebdesigns.de/oscar.krause/fastapi-dls
+  - be on dokcer runner...
   - make sure compose is installed (```apt install docker-compose-plugin```)
   - create ```compose.yml``` in a nice place (your home dir?), choosing 8443 as host port:
     ```
@@ -137,7 +138,9 @@ rm /etc/apt/sources.list.d/pve-enterprise.list
       dls-db:
     ```
   - as root: ```docker compose up --detach```
+- go back to proxmox server:
   - maybe run nmap against the docker host to see if 8443 is open: ```nmap -v -sT <ip>```
+  - token download, change curl command to create directory if it doesn't exist and change port to 8440: ``` curl --insecure -L -X GET https://<ip>:8443/-/client-token -o /etc/nvidia/ClientConfigToken/client_configuration_token_$(date '+%d-%m-%Y-%H-%M-%S').tok --create-dirs```
 
 ## Add ZFS RAID for VM Data
 - to do
