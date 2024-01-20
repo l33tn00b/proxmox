@@ -177,6 +177,9 @@ Install:
 - Base Image Debian 12
 - install mc
 - install unattended-upgrades
+- install curl
+- copy over (scp) grid drivers
+- get license token, accomodate for changed port (8443): ```curl --insecure -L -X GET https://<docker runner ip>:8443/-/client-token -o /etc/nvidia/ClientConfigToken/client_configuration_token_$(date '+%d-%m-%Y-%H-%M-%S').tok --create-dirs```
 
 # Remarks concerning willow
 - AutoCorrect Fork for handing misunderstood/non-recognized commands off to alexa: https://github.com/kovrom/willow-autocorrect
