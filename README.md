@@ -13,6 +13,7 @@ Got some old hardware, had to use it.
 - ATX Power supply, Xilence Office 450W
 - RAM 8GB
 - SSD (Crucial, 250GB)
+- Tesla P4 (greetings from an old mining rig in China).
 
 New tower case...
 
@@ -99,7 +100,9 @@ Base Installation complete?
 rm /etc/apt/sources.list.d/pve-enterprise.list
 
 ## GPU virtualization
-Follow https://gitlab.com/polloloco/vgpu-proxmox
+- Follow https://gitlab.com/polloloco/vgpu-proxmox
+  - maybe ask someone for ```NVIDIA-GRID-Linux-KVM-535.129.03-537.70.zip``` if you can't cough up an enterprisely-looking email address
+- After having docker runner up (see below, Basic VMs): Set Up Delegated License Server (link from above git): https://git.collinwebdesigns.de/oscar.krause/fastapi-dls 
 
 ## Add ZFS RAID for VM Data
 - to do
