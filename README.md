@@ -179,6 +179,10 @@ Install:
 - install unattended-upgrades
 - install curl
 - copy over (scp) grid drivers
+- unzip
+- go to subdir guest_drivers
+- ```dpgk -i nvidia-linux-grid-535_535.129.03_amd64.deb```will fail
+- run ```apt --fix-broken install```
 - get license token, accomodate for changed port (8443): ```curl --insecure -L -X GET https://<docker runner ip>:8443/-/client-token -o /etc/nvidia/ClientConfigToken/client_configuration_token_$(date '+%d-%m-%Y-%H-%M-%S').tok --create-dirs```
 
 # Remarks concerning willow
