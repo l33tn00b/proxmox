@@ -65,6 +65,11 @@ lspci
 05:00.0 PCI bridge: ASMedia Technology Inc. ASM1083/1085 PCIe to PCI Bridge (rev 03)
 ```
 
+# Power consumption
+Above setup (core i3, HM81, SSD, Tesla P4, 8GB RAM, Xilence Power Supply) will draw ~43 Watts when idle. Makes for 1,08 kWh per day. In total 394 kWh per year. Electricity is about 30 cents/kWh. So in total 131€ per year.
+
+There's builds that draw much less idle power. But these come at a hardware cost (remember? got it for free). I figured break even would be after approx. seven years. So I don't even start thinking about that. And another point: It's not like that electricity will be wasted. We're inside (at home) and thus heating the house. So it's kinda like electrons having been used for running the server are not waste heat. 
+
 # Steps
 ## HW build
 - Sidenote: Updating the BIOS:
@@ -204,7 +209,8 @@ Then I tried updating the BIOS (which took me on a lengthy journey to re-install
 - change the bash for loop for mounting: ```for i in /dev /dev/pts /proc /sys /sys/firmware/efi/efivars /run; do sudo mount -B $i /mnt$i; done``` else you'll see a message when doing grub-install complaining about missing efivars. 
 - And make sure, you're booting in uefi mode from that drive (set it in BIOS) (else you won't be able to set efi boot parameters from the live system?)
   
-Anyway, proxmox was back on track. And no change in being able to activate IOMMU in the BIOS. Back to the reading table. Dooh. HM81 is a stripped down consumer product with the IO virtualization part deactivated. So there is no way of activating IOMMU in the operating system because the chipset doesn't support it. I'll probably pass through the entire GPU non-virtualized...
+Anyway, proxmox was back on track. And no change in being able to activate IOMMU in the BIOS. Back to the reading table. Dooh. HM81 is a stripped down consumer product with the IO virtualization part deactivated. So there is no way of activating IOMMU in the operating system because the chipset doesn't support it. I'll probably pass through the entire GPU non-virtualized... hell, needs IOMMU, too. But docker container without promox might be a solution? Well, no. Just got another old board with Q87 chipset.
+
 Some more learning on the way:
 - change keyboard layout
   - Debian doc says ```dpkg-reconfigure keyboard-configuration``` and ```service reload keyboard-configuration```. Insufficient. Must call ```setupcon``` after.
