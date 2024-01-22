@@ -67,9 +67,12 @@ lspci
 
 # Steps
 ## HW build
-- MSI Motherboard, toggle to IGP (onboard graphics) in BIOS.
-- Sidenote: Updating the BIOS: MSI tell us to put the entire unzipped folder in the root dir of of the flash drive. This is not the right way. You need to put the files (not the entire folder) in the root dir of the flash drive.
+- Sidenote: Updating the BIOS:
+  - MSI tell us to put the entire unzipped folder in the root dir of of the flash drive.
+  - This is not the right way. You need to put the files (not the entire folder) in the root dir of the flash drive.
+  - DO THE BIOS UPDATE BEFORE INSTALLING THE OS (else you'll have to re-write your UEFI Boot loader (painful))
 - Insert GPU (only after BIOS update because this will revert the settings to default (which is external GPU)).
+- MSI Motherboard, toggle to IGP (onboard graphics) in BIOS.
   
 ## Install base Debian 12
 NSTR, just
