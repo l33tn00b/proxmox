@@ -3,7 +3,7 @@ Proxmox HomeLab (?)
 
 # What
 Proxmox VE Homelab server.   
-Mostly for virtualizing a GPU (Tesla P4) to run whispernet (speech recognition) (willow)
+Mostly for virtualizing a GPU (Tesla P4) to run speech to text (whispernet (willow)). Is picovoice available locally?
 Maybe we'll run some other stuff on top (HomeAssistant?).
 Totally overblown. Let's do it anyway.
 
