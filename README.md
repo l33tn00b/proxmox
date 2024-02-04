@@ -5,6 +5,8 @@ Proxmox HomeLab (?)
 Proxmox VE Homelab server.   
 Mostly for virtualizing a GPU (Tesla P4) to run speech to text (whispernet (willow)). Is picovoice available locally? This is interesting, too: https://github.com/duhow/xiaoai-patch
 
+For a little fun project involving mistral: https://www.reddit.com/r/LocalLLaMA/comments/17tvwk6/esp32_willow_home_assistant_mistral_7b/ (scroll down for instructions)
+
 Maybe we'll run some other stuff on top (HomeAssistant?).
 Totally overblown. Let's do it anyway.
 
