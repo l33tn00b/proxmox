@@ -217,3 +217,7 @@ Anyway, proxmox was back on track. And no change in being able to activate IOMMU
 Some more learning on the way:
 - change keyboard layout
   - Debian doc says ```dpkg-reconfigure keyboard-configuration``` and ```service reload keyboard-configuration```. Insufficient. Must call ```setupcon``` after.
+ 
+# Using Intel QT87 Board
+Switched boards, saw a reduction in idle power from those 43 Watts (MSI H81 board) to 39 Watts.
+Guess what, had to re-install the UEFI boot code.
