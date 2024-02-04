@@ -237,11 +237,11 @@ Then I tried updating the BIOS (which took me on a lengthy journey to re-install
   else you'll see a message when doing grub-install complaining about missing efivars. 
 - And make sure, you're booting in uefi mode from that drive (set it in BIOS) (else you won't be able to set efi boot parameters from the live system?)
   
-Anyway, proxmox was back on track. And no change in being able to activate IOMMU in the BIOS. Back to the reading table. Dooh. HM81 is a stripped down consumer product with the IO virtualization part deactivated. So there is no way of activating IOMMU in the operating system because the chipset doesn't support it. I'll probably pass through the entire GPU non-virtualized... hell, needs IOMMU, too. But docker container without promox might be a solution? Well, no. Just got another old board with Q87 chipset.
+Anyway, proxmox was back on track. And no change in being able to activate IOMMU in the BIOS. Back to the reading table. Dooh. HM81 is a stripped down consumer product with the IO virtualization part deactivated. So there is no way of activating IOMMU in the operating system because the chipset doesn't support it. I'll probably pass through the entire GPU non-virtualized... hell, needs IOMMU, too. But docker container without promox might be a solution? Well, no. Just got another old board with Q87 chipset. See below.
 
 Some more learning on the way:
 - change keyboard layout
-  - Debian doc says ```dpkg-reconfigure keyboard-configuration``` and ```service reload keyboard-configuration```. Insufficient. Must call ```setupcon``` after.
+  - Debian doc says ```dpkg-reconfigure keyboard-configuration``` and ```service keyboard-configuration reload```. Insufficient. Just call ```setupcon``` after.
  
 # Using Intel QT87 Board
 Switched boards, saw a reduction in idle power from those 43 Watts (MSI H81 board) to 39 Watts.
