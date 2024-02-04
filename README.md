@@ -207,7 +207,9 @@ Even when making sure I had activated the proper boot parameters (grub command l
 Then I tried updating the BIOS (which took me on a lengthy journey to re-install the efi bootloader because all settings were deleted:
 - see https://emmanuel-galindo.github.io/en/2017/04/05/fixing-debian-boot-uefi-grub
 - but the link to the efi shell file is broken. Get it from https://github.com/tianocore/edk2/blob/edk2-stable201903/ShellBinPkg/UefiShell/X64/Shell.efi .
-- change the bash for loop for mounting: ```for i in /dev /dev/pts /proc /sys /sys/firmware/efi/efivars /run; do sudo mount -B $i /mnt$i; done``` else you'll see a message when doing grub-install complaining about missing efivars. 
+- change the bash for loop for mounting:  
+  ```for i in /dev /dev/pts /proc /sys /sys/firmware/efi/efivars /run; do sudo mount -B $i /mnt$i; done```  
+  else you'll see a message when doing grub-install complaining about missing efivars. 
 - And make sure, you're booting in uefi mode from that drive (set it in BIOS) (else you won't be able to set efi boot parameters from the live system?)
   
 Anyway, proxmox was back on track. And no change in being able to activate IOMMU in the BIOS. Back to the reading table. Dooh. HM81 is a stripped down consumer product with the IO virtualization part deactivated. So there is no way of activating IOMMU in the operating system because the chipset doesn't support it. I'll probably pass through the entire GPU non-virtualized... hell, needs IOMMU, too. But docker container without promox might be a solution? Well, no. Just got another old board with Q87 chipset.
