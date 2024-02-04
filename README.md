@@ -92,6 +92,8 @@ lspci
 # Power consumption
 Above setup (core i3, HM81, SSD, Tesla P4, 8GB RAM, Xilence Power Supply) will draw ~43 Watts when idle. Makes for 1,08 kWh per day. In total 394 kWh per year. Electricity is about 30 cents/kWh. So in total 131€ per year.
 
+Changed setup with Q87 board draws ~39 Watts at idle.
+
 There's builds that draw much less idle power. But these come at a hardware cost (remember? got it for free). I figured break even would be after approx. seven years. So I don't even start thinking about that. And another point: It's not like that electricity will be wasted. We're inside (at home) and thus heating the house. So it's kinda like electrons having been used for running the server are not waste heat. 
 
 # Steps
