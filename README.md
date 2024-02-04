@@ -7,6 +7,9 @@ Mostly for virtualizing a GPU (Tesla P4) to run speech to text (whispernet (will
 
 For a little fun project involving mistral: https://www.reddit.com/r/LocalLLaMA/comments/17tvwk6/esp32_willow_home_assistant_mistral_7b/ (scroll down for instructions)
 
+Quick and easy integration with Home Assistant: https://community.home-assistant.io/t/espressif-box-devices-willow-multilingual-voice-stt-tts-home-assistant-add-on-how-to-configure/664916
+
+
 Maybe we'll run some other stuff on top (HomeAssistant?).
 Totally overblown. Let's do it anyway.
 
