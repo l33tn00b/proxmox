@@ -2,7 +2,31 @@
 Proxmox HomeLab (?)
 
 # What
-Proxmox VE Homelab server.   
+Started as a Proxmox VE Homelab server. Ended up realizing I was being f*cked over by Intel: https://www.reddit.com/r/VFIO/comments/gwsw6y/iommu_groups_explained_or_how_to_run_dual_gpus/
+
+Basically, I (now) have chipset IOMMU support but everything gets lumped into one big IOMMU group:
+```
+for d in /sys/kernel/iommu_groups/*/devices/*; do n=${d#*/iommu_groups/*}; n=${n%%/*}; printf 'IOMMU group %s ' "$n"; lspci -nns "${d##*/}"; done
+00:01.0 PCI bridge [0604]: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor PCI Express x16 Controller [8086:0c01] (rev 06)
+00:02.0 VGA compatible controller [0300]: Intel Corporation 4th Generation Core Processor Family Integrated Graphics Controller [8086:041e] (rev 06)
+00:03.0 Audio device [0403]: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor HD Audio Controller [8086:0c0c] (rev 06)
+00:14.0 USB controller [0c03]: Intel Corporation 8 Series/C220 Series Chipset Family USB xHCI [8086:8c31] (rev 04)
+00:16.0 Communication controller [0780]: Intel Corporation 8 Series/C220 Series Chipset Family MEI Controller #1 [8086:8c3a] (rev 04)
+00:16.3 Serial controller [0700]: Intel Corporation 8 Series/C220 Series Chipset Family KT Controller [8086:8c3d] (rev 04)
+00:19.0 Ethernet controller [0200]: Intel Corporation Ethernet Connection I217-LM [8086:153a] (rev 04)
+00:1a.0 USB controller [0c03]: Intel Corporation 8 Series/C220 Series Chipset Family USB EHCI #2 [8086:8c2d] (rev 04)
+00:1b.0 Audio device [0403]: Intel Corporation 8 Series/C220 Series Chipset High Definition Audio Controller [8086:8c20] (rev 04)
+00:1c.0 PCI bridge [0604]: Intel Corporation 8 Series/C220 Series Chipset Family PCI Express Root Port #1 [8086:8c10] (rev d4)
+00:1c.5 PCI bridge [0604]: Intel Corporation 8 Series/C220 Series Chipset Family PCI Express Root Port #6 [8086:8c1a] (rev d4)
+00:1d.0 USB controller [0c03]: Intel Corporation 8 Series/C220 Series Chipset Family USB EHCI #1 [8086:8c26] (rev 04)
+00:1f.0 ISA bridge [0601]: Intel Corporation Q87 Express LPC Controller [8086:8c4e] (rev 04)
+00:1f.2 SATA controller [0106]: Intel Corporation 8 Series/C220 Series Chipset Family 6-port SATA Controller 1 [AHCI mode] [8086:8c02] (rev 04)
+00:1f.3 SMBus [0c05]: Intel Corporation 8 Series/C220 Series Chipset Family SMBus Controller [8086:8c22] (rev 04)
+01:00.0 3D controller [0302]: NVIDIA Corporation GP104GL [Tesla P4] [10de:1bb3] (rev a1)
+03:00.0 PCI bridge [0604]: Integrated Technology Express, Inc. IT8892E PCIe to PCI Bridge [1283:8892] (rev 41)
+```
+F*ck Intel. Should have stayed with AMD (ever since I had a K5).
+
 Mostly for virtualizing a GPU (Tesla P4) to run speech to text (whispernet (willow)). Is picovoice available locally? This is interesting, too: https://github.com/duhow/xiaoai-patch
 
 For a little fun project involving mistral: https://www.reddit.com/r/LocalLLaMA/comments/17tvwk6/esp32_willow_home_assistant_mistral_7b/ (scroll down for instructions)
