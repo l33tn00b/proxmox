@@ -2,7 +2,7 @@
 Proxmox HomeLab (?)
 
 # What
-Started as a Proxmox VE Homelab server. Ended up realizing I was being f*cked over by Intel: https://www.reddit.com/r/VFIO/comments/gwsw6y/iommu_groups_explained_or_how_to_run_dual_gpus/
+Started as a Proxmox VE Homelab server. Ended up realizing I was being thrown a wrench by Intel: https://www.reddit.com/r/VFIO/comments/gwsw6y/iommu_groups_explained_or_how_to_run_dual_gpus/
 
 Basically, I (now) have chipset IOMMU support but everything gets lumped into one big IOMMU group:
 ```
@@ -25,7 +25,11 @@ for d in /sys/kernel/iommu_groups/*/devices/*; do n=${d#*/iommu_groups/*}; n=${n
 01:00.0 3D controller [0302]: NVIDIA Corporation GP104GL [Tesla P4] [10de:1bb3] (rev a1)
 03:00.0 PCI bridge [0604]: Integrated Technology Express, Inc. IT8892E PCIe to PCI Bridge [1283:8892] (rev 41)
 ```
-F*ck Intel. Should have stayed with AMD (ever since I had a K5).
+This is thw block diagram from the manual, see https://community.intel.com/cipcp26785/attachments/cipcp26785/processors/61731/3/DQ87PG%20TPS.pdf :
+![grafik](https://github.com/l33tn00b/proxmox/assets/28904067/08cbdc20-4fe6-4b97-b7b1-bcda40b45db9)
+
+
+Intel sucks. Should have stayed with AMD (ever since I had a K5).
 
 Mostly for virtualizing a GPU (Tesla P4) to run speech to text (whispernet (willow)). Is picovoice available locally? This is interesting, too: https://github.com/duhow/xiaoai-patch
 
