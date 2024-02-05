@@ -4,7 +4,7 @@ Proxmox HomeLab (?)
 # What
 Started as a Proxmox VE Homelab server. Ended up realizing I was being thrown a wrench by Intel: https://www.reddit.com/r/VFIO/comments/gwsw6y/iommu_groups_explained_or_how_to_run_dual_gpus/
 
-Basically, I (now) have chipset IOMMU support but everything gets lumped into one big IOMMU group:
+Basically, I (now) have chipset IOMMU support but everything gets lumped into one big IOMMU group (which is non-existent?):
 ```
 for d in /sys/kernel/iommu_groups/*/devices/*; do n=${d#*/iommu_groups/*}; n=${n%%/*}; printf 'IOMMU group %s ' "$n"; lspci -nns "${d##*/}"; done
 00:01.0 PCI bridge [0604]: Intel Corporation Xeon E3-1200 v3/4th Gen Core Processor PCI Express x16 Controller [8086:0c01] (rev 06)
@@ -40,6 +40,12 @@ Quick and easy integration with Home Assistant: https://community.home-assistant
 
 Maybe we'll run some other stuff on top (HomeAssistant?).
 Totally overblown. Let's do it anyway.
+
+Show mediated devices for our GPU card at 01:00.0 (from `lspci`) as per https://pve.proxmox.com/wiki/PCI(e)_Passthrough (section "Mediated Devices"):
+```
+ls /sys/bus/pci/devices/0000:01:00.0/mdev_supported_types
+nvidia-157  nvidia-214  nvidia-243  nvidia-63  nvidia-64  nvidia-65  nvidia-66  nvidia-67  nvidia-68  nvidia-69  nvidia-70  nvidia-71
+```
 
 # How
 Got some old hardware, had to use it. Started out with:
