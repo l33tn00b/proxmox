@@ -47,6 +47,10 @@ ls /sys/bus/pci/devices/0000:01:00.0/mdev_supported_types
 nvidia-157  nvidia-214  nvidia-243  nvidia-63  nvidia-64  nvidia-65  nvidia-66  nvidia-67  nvidia-68  nvidia-69  nvidia-70  nvidia-71
 ```
 
+But the real guide for getting this up and running is:
+https://wvthoog.nl/proxmox-7-vgpu/
+
+
 # How
 Got some old hardware, had to use it. Started out with:
 - Mainboard MSI HM81-P33 (which turned out to be a dud, see below)
