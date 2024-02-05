@@ -51,6 +51,27 @@ But the real guide for getting this up and running is:
 https://wvthoog.nl/proxmox-7-vgpu/
 
 
+```
+dmesg|grep nvidia
+[    3.454142] nvidia: module verification failed: signature and/or required key missing - tainting kernel
+[    3.684970] nvidia-nvlink: Nvlink Core is being initialized, major device number 234
+[    3.687008] nvidia 0000:01:00.0: enabling device (0000 -> 0002)
+```
+
+`sudo apt-get install uuid`
+```
+uuid -n 2
+724a47ae-c3fd-11ee-81ec-5b2f36bc1ef0
+724a4902-c3fd-11ee-81ed-6b5746ab924d
+```
+
+```
+mdevctl start -u 724a47ae-c3fd-11ee-81ec-5b2f36bc1ef0 -p 0000:01:00.0 -t nvidia-69
+mdevctl start -u 724a4902-c3fd-11ee-81ed-6b5746ab924d -p 0000:01:00.0 -t nvidia-69
+```
+
+Don't see no args parameter in your VM's conf file? Doesn't matter. Just add it.
+
 # How
 Got some old hardware, had to use it. Started out with:
 - Mainboard MSI HM81-P33 (which turned out to be a dud, see below)
